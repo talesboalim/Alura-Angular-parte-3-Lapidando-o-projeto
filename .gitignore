@@ -8,6 +8,7 @@
 # dependencies
 /alurapic/node_modules
 /api/node_modules
+/log-server/node_modules
 
 # IDEs and editors
 /alurapic/.idea

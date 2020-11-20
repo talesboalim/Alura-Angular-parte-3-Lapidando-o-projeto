@@ -25,7 +25,7 @@ export class PhotoService {
             .append('page', page.toString());
 
         return this.http
-            .get<Photo[]>(API + '/' + userName + '/photos', { params });
+            .get<Photo[]>(API + '/' + userName + '/photosx', { params });
     }
 
     upload(description: string, allowComments: boolean, file: File) {
@@ -35,7 +35,11 @@ export class PhotoService {
         formData.append('allowComments', allowComments ? 'true' : 'false');
         formData.append('imageFile', file);
 
-        return this.http.post(API + '/photos/upload', formData);
+        return this.http.post(API + '/photos/upload', formData,
+            {
+                observe: 'events',
+                reportProgress: true
+            });
     }
 
     findById(photoId: number) {
