@@ -13,7 +13,7 @@ import { userNamePassword } from './username-password.validator';
     providers: [UserNotTakenValidatorService]
 })
 export class SignUpComponent implements OnInit {
-
+    fromUrl: string;
     signupForm: FormGroup;
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
@@ -25,6 +25,7 @@ export class SignUpComponent implements OnInit {
         private platformDetectorService: PlatformDetectorService) { }
 
     ngOnInit(): void {
+
 
         this.signupForm = this.formBuilder.group({
             email: ['',
