@@ -5,6 +5,7 @@ import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { UserService } from "../../core/user/user.service";
 import { Router } from "@angular/router";
 import { ServerLogService } from './server-log-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
@@ -26,7 +27,7 @@ export class GlobalErrorHandler implements ErrorHandler {
             ? error.message :
             error.toString();
 
-        router.navigate(['/error']);
+        if (environment.production) router.navigate(['/error']);
 
         StackTrace
             .fromError(error)
